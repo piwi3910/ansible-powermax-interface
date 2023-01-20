@@ -1,0 +1,5 @@
+ControlMaster auto
+ControlPersist 60s
+UserKnownHostsFile config/known_hosts
+HashKnownHosts no
+PreferredAuthentications publickey
