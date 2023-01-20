@@ -1,6 +1,5 @@
 ---
 
-ansible_host: "127.0.0.1"
 Powermax_SID: "297901664"
 SYMCLI_CONNECT_env: "CLR-PMAX2"
 SYMCLI_CONNECT_TYPE_env: "REMOTE"

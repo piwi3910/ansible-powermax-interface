@@ -8,4 +8,5 @@
         export SYMCLI_CONNECT="{{ SYMCLI_CONNECT_env }}"
         "{{ SYMCLI_PATH }}/bin/symcfg -sid {{ Powermax_SID }} -RA {{ item.split(',')[0] }} -p {{ item.split(',')[1] }} online -nop"
       with_items: "{{ RA_Ports }}"
+      delegate_to: localhost
         
