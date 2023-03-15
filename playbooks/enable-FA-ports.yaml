@@ -3,10 +3,16 @@
   gather_facts: no
   tasks:
     - name: Disable ports
+      register: symcfgout
       shell: |
         export SYMCLI_CONNECT_TYPE="{{ SYMCLI_CONNECT_TYPE_env }}"
         export SYMCLI_CONNECT="{{ SYMCLI_CONNECT_env }}"
         {{ SYMCLI_PATH }}/bin/symcfg -sid {{ Powermax_SID }} -FA {{ item.split(',')[0] }} -p {{ item.split(',')[1] }} online -nop
       with_items: "{{ FA_Ports }}"
       delegate_to: localhost
+      changed_when: "'is already in the requested state' not in symcfgout.stderr"
+      failed_when:
+        - symcfgout.rc !=0
+        - "'is already in the requested state' not in symcfgout.stderr"     
+      
         
